@@ -1,6 +1,6 @@
 FROM balenalib/raspberrypi4-64-debian-node:14-latest as builder
 ARG TAG=next
-RUN install_packages git python build-base linux-headers-$(uname -r) udev
+RUN install_packages git python build-essential udev
 WORKDIR /work
 RUN npx degit tagyoureit/nodejs-poolController#${TAG}
 RUN npm ci
