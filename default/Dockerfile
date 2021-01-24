@@ -6,7 +6,7 @@ RUN npx degit tagyoureit/nodejs-poolController#${TAG}
 RUN npm ci
 RUN npm run build
 
-FROM balenalib/raspberrypi4-64-debian-node:14-latest
+FROM node:lts-alpine
 WORKDIR /usr/local/nodejs-poolController
 COPY --from=builder /work/node_modules .
 # Consider moving these files to dist folder
