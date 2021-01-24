@@ -1,4 +1,4 @@
-FROM balenalib\raspberrypi4-64-debian-node:14-latest as builder
+FROM balenalib/raspberrypi4-64-debian-node:14-latest as builder
 ARG TAG=next
 RUN install_packages git python build-base linux-headers udev
 WORKDIR /work
@@ -6,7 +6,7 @@ RUN npx degit tagyoureit/nodejs-poolController#${TAG}
 RUN npm ci
 RUN npm run build
 
-FROM balenalib\raspberrypi4-64-debian-node:14-latest
+FROM balenalib/raspberrypi4-64-debian-node:14-latest
 WORKDIR /usr/local/nodejs-poolController
 ENV UDEV=on
 COPY --from=builder /work/node_modules .
