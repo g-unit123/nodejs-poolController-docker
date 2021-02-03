@@ -1,6 +1,6 @@
 FROM node:12-alpine AS build
-ARG TAG=master
-RUN apk add --no-cache make gcc g++ python linux-headers udev tzdata
+ARG TAG=next
+RUN apk add --no-cache make gcc g++ python linux-headers udev tzdata git
 WORKDIR /app
 RUN npx degit tagyoureit/nodejs-poolController#${TAG}
 COPY defaultConfig.json package.json ./
