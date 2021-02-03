@@ -5,7 +5,7 @@ WORKDIR /app
 RUN npx degit tagyoureit/nodejs-poolController#${TAG}
 #COPY defaultConfig.json package.json ./
 RUN npm install
-#COPY . .
+COPY ./src .
 RUN npm run build && npm prune --production
 
 FROM node:12-alpine as prod
