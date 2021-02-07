@@ -16,7 +16,9 @@ COPY --chown=node:node --from=build /app/defaultConfig.json /app/package.json ./
 COPY --chown=node:node --from=build /app/dist ./dist
 COPY --chown=node:node --from=build /app/logger ./logger
 COPY --chown=node:node --from=build /app/web ./web
-run ls -la /app/dist
+RUN mkdir /app/config_file
+#RUN cp /app/defaultConfig.json /app/config_file/config.json
+#RUN ln -s /app/config_file/config.json /app/config.json
 USER node
 ENV NODE_ENV=production
 ENTRYPOINT ["node", "dist/app.js"]
