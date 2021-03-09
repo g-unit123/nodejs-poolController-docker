@@ -1,13 +1,19 @@
 version: "3.9"
 
+volumes:
+  nodejs-poolcontroller:
+
 services:
 
 #NodeJS-PoolController
   #Core
-  nodeJS-poolController:
-    build: ./default
+  nodejs-poolcontroller:
+    build: ./nodejs-poolController-docker/default
     restart: on-failure
     privileged: true
     network_mode: host
     ports:
-      -4200:4200
+      - 4200:4200
+    volumes:
+      - nodejs-poolcontroller:/app/config_file
+
