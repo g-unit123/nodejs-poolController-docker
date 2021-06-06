@@ -1,4 +1,4 @@
-FROM node:12-alpine AS build
+FROM node:lts-alpine AS build
 ARG TAG=next
 RUN apk add --no-cache make gcc g++ python linux-headers udev tzdata git
 WORKDIR /app
@@ -6,7 +6,7 @@ RUN npx degit tagyoureit/nodejs-poolController#${TAG}
 RUN npm install
 RUN npm run build && npm prune --production
 
-FROM node:12-alpine as prod
+FROM node:lts-alpine as prod
 RUN mkdir /app && chown node:node /app
 WORKDIR /app
 COPY --chown=node:node --from=build /app/node_modules ./node_modules
