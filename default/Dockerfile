@@ -7,7 +7,7 @@ RUN npx degit tagyoureit/nodejs-poolController#${TAG}
 #RUN npm run build && npm prune --production
 RUN npm ci
 RUN npm run build
-RUN ci --production
+RUN npm ci --production
 
 FROM node:lts-alpine as prod
 #RUN mkdir /app && chown node:node /app
