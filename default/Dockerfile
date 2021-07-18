@@ -1,5 +1,5 @@
 FROM node:lts-alpine AS build
-ARG TAG=next
+ARG TAG=master
 RUN apk add --no-cache make gcc g++ python linux-headers udev tzdata git
 WORKDIR /app
 RUN npx degit tagyoureit/nodejs-poolController#${TAG}
